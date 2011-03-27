@@ -9,11 +9,11 @@
 #     - <Heroku config:var name>: <Heroku config:var value>
 #
 production: 
-  app: FIXME-production
+  app: high-lightning-781
   config:
     BUNDLE_WITHOUT: "development:test"
 
 staging:
-  app: FIXME-staging
+  app: quiet-fog-435
   config: &default
     BUNDLE_WITHOUT: "development:test"
