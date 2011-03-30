@@ -12,7 +12,7 @@ r = Role.find_by_name('developer')
 
 team_member_1 = User.new(:first_name => 'Andy',
                          :last_name => 'Niccolai',
-                         :email => 'aniccola@mines.edu',
+                         :email => 'adnap4@mines.edu',
                          :password => 'changeme',
                          :password_confirmation => 'changeme',
                          :role => r)
