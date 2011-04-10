@@ -71,6 +71,10 @@ class Admin::RolesController < Admin::AdminController
     end
   end
 
+  def to_s
+  	"blasssh"
+  end
+  
   private
 
     def find_role

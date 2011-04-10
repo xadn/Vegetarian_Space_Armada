@@ -23,5 +23,9 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def full_name
+  	fullName = :first_name + ' ' + :last_name
+  end
 
 end
