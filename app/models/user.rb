@@ -7,8 +7,12 @@ class User < ActiveRecord::Base
   belongs_to :role, :counter_cache => true
 
   default_scope :include => :role
+  
+  validates_presence_of :role
 
   before_create :assign_default_role
+  
+
   
   # returns a persons full name
   def full_name
