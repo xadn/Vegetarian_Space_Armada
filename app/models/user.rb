@@ -9,7 +9,16 @@ class User < ActiveRecord::Base
   default_scope :include => :role
 
   before_create :assign_default_role
-
+  
+  # returns a persons full name
+  def full_name
+  	first_name + " " + last_name
+  end
+  
+  def to_s
+  	full_name
+  end
+  
   def role_symbols
     [role.name.downcase.to_sym]
   end
