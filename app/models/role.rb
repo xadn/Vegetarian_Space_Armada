@@ -7,6 +7,12 @@ class Role < ActiveRecord::Base
 
   has_many :users
 
+  # override the name setter to strip leading and 
+  # trailing whitespace as well as lowercase name
+  def name=(n)
+  	write_attribute(:name, n.strip.downcase)
+  end
+
   # to_s method for roles, returns the name
   def to_s
   	name
