@@ -7,6 +7,11 @@ class Role < ActiveRecord::Base
 
   has_many :users
 
+  # to_s method for roles, returns the name
+  def to_s
+  	name
+  end
+  
 end
 
 

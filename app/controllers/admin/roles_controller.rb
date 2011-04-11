@@ -70,8 +70,6 @@ class Admin::RolesController < Admin::AdminController
       end
     end
   end
-
-
   
   private
 
