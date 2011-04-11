@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   
   validates_presence_of :role
 
-  before_create :assign_default_role
+  after_validation :assign_default_role
+  
+  validates_presence_of :role
   
 
   
