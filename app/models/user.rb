@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
 
   default_scope :include => :role
 
-  before_create :assign_default_role
+  after_validation :assign_default_role
+  
+  validates_presence_of :role
   
   # returns a persons full name
   def full_name
