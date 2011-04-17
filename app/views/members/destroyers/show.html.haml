@@ -1,0 +1,19 @@
+- content_for :title do
+  Destroyer
+
+%p
+  %strong Name:
+  =h @destroyer.name
+%p
+  %strong Price:
+  =h @destroyer.price
+%p
+  %strong Description:
+  =h @destroyer.description
+
+%p
+  = link_to "Edit", edit_member_destroyer_path(@destroyer)
+  |
+  = link_to "Destroy", member_destroyers_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", member_destroyers_path

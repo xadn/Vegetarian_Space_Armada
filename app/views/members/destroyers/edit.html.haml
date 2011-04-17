@@ -1,0 +1,9 @@
+- content_for :title do
+  Edit Destroyer
+
+= render :partial => "form", :locals => {:destroyer => @destroyer}
+
+%p
+  = link_to "Show", member_destroyer_path(@destroyer)
+  |
+  = link_to "View All", member_destroyers_path
