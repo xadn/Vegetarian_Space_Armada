@@ -1,8 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :destroyers
-
-  map.resources :destroyers
-
 
   map.root :controller => "application", :action => "show"
   map.logout 'logout', :controller => "user_sessions", :action => "destroy"
@@ -16,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :roles
     admin.resources :users
+    admin.resources :destroyers
     admin.root :controller => 'admin', :action => 'index'
   end
 

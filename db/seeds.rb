@@ -10,21 +10,21 @@ Role.create!(:name => 'member', :description => 'A typical application user.')
 # Seed developer users.
 r = Role.find_by_name('developer')
 
-team_member_1 = User.new(:first_name => 'Andy',
+andy = User.new(:first_name => 'Andy',
                          :last_name => 'Niccolai',
                          :email => 'adnap4@gmail.com',
                          :password => 'changeme',
                          :password_confirmation => 'changeme',
                          :role => r)
-team_member_1.save_without_session_maintenance
+andy.save_without_session_maintenance
 
-team_member_2 = User.new(:first_name => 'Amanreet',
+amanreet = User.new(:first_name => 'Amanreet',
                          :last_name => 'Bajwa',
                          :email => 'abajwa@mines.edu',
                          :password => 'changeme',
                          :password_confirmation => 'changeme',
                          :role => r)
-team_member_2.save_without_session_maintenance
+amanreet.save_without_session_maintenance
 
 yong = User.new(:first_name => 'Yong',
                 :last_name => 'Bakos',
@@ -34,3 +34,24 @@ yong = User.new(:first_name => 'Yong',
                 :role => r)
 yong.save_without_session_maintenance
 
+# Seed destroyers.
+Destroyer.create(
+    :name => "Enterprise",
+    :description => "We'll pick you up!",
+    :price => 5000,
+    :user => andy 
+  )
+                
+Destroyer.create(
+    :name => "Enterprise2",
+    :description => "We'll pick you up!",
+    :price => 5000,
+    :user => andy 
+  )
+                  
+Destroyer.create(
+    :name => "Enterprise3",
+    :description => "We'll pick you up!",
+    :price => 5000,
+    :user => amanreet 
+    )

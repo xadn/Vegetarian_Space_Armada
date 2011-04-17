@@ -4,6 +4,7 @@ class CreateDestroyers < ActiveRecord::Migration
       t.string :name
       t.float :price
       t.text :description
+      t.integer :user_id
       t.timestamps
     end
   end
