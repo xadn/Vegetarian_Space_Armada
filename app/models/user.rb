@@ -12,10 +12,6 @@ class User < ActiveRecord::Base
 
   after_validation :assign_default_role
   
-  validates_presence_of :role
-  
-
-  
   # returns a persons full name
   def full_name
   	first_name + " " + last_name
