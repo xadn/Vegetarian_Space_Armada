@@ -7,7 +7,10 @@ class Admin::DestroyersController < Admin::AdminController
   end
 
   def show
-    @destroyer = Destroyer.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml {render :xml => @shild }
+    end
   end
 
   def new

@@ -41,35 +41,49 @@ yong = User.new(
     )
 yong.save_without_session_maintenance
 
-user = User.new(
-    :first_name => 'user',
-    :last_name => 'user',
-    :email => 'user@example.com',
-    :password => 'user',
-    :password_confirmation => 'user',
+john = User.new(
+    :first_name => 'John',
+    :last_name => 'Doe',
+    :email => 'john@example.com',
+    :password => 'password',
+    :password_confirmation => 'password',
     :role => m
   )
-user.save_without_session_maintenance
+john.save_without_session_maintenance
 
 
 # Seed destroyers.
 Destroyer.create(
     :name => "Enterprise",
-    :description => "We'll pick you up!",
     :price => 5000,
-    :user => andy 
+    :user => andy,
+    :description => "We'll pick you up!"
   )
-                
+
 Destroyer.create(
     :name => "Enterprise2",
-    :description => "We'll pick you up!",
     :price => 5000,
-    :user => andy 
+    :user => john,
+    :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
-                  
+    
 Destroyer.create(
     :name => "Enterprise3",
-    :description => "We'll pick you up!",
     :price => 5000,
-    :user => amanreet 
-    )
+    :user => john,
+    :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  )
+
+Destroyer.create(
+    :name => "Enterprise4",
+    :price => 5000,
+    :user => john,
+    :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  )
+
+Destroyer.create(
+    :name => "Enterprise5",
+    :price => 5000,
+    :user => john,
+    :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  )

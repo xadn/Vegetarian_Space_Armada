@@ -1,4 +1,4 @@
-class Member::DestroyersController < Memeber::MemberController
+class Members::DestroyersController < Members::MembersController
   
   #before_filter :only => [:show, :edit, :update, :destroy]
   
@@ -7,7 +7,10 @@ class Member::DestroyersController < Memeber::MemberController
   end
 
   def show
-    @destroyer = Destroyer.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml {render :xml => @shild }
+    end
   end
 
   def new
@@ -19,7 +22,7 @@ class Member::DestroyersController < Memeber::MemberController
     @destroyer.user = current_user
     if @destroyer.save
       flash[:notice] = "Successfully created destroyer."
-      redirect_to member_destroyers_url(@destroyer)
+      redirect_to members_destroyers_url(@destroyer)
     else
       render :action => 'new'
     end
@@ -43,6 +46,6 @@ class Member::DestroyersController < Memeber::MemberController
     @destroyer = Destroyer.find(params[:id])
     @destroyer.destroy
     flash[:notice] = "Successfully destroyed destroyer."
-    redirect_to member_destroyers_url
+    redirect_to members_destroyers_url
   end
 end
