@@ -19,6 +19,7 @@ class Members::DestroyersController < Members::MembersController
     end
 
     def show
+      @favorite = Favorite.find(:destroyer => @destroyer)
       respond_to do |format|
         format.html
         format.xml {render :xml => @destroyer }

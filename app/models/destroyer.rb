@@ -4,6 +4,8 @@ class Destroyer < ActiveRecord::Base
   
   belongs_to :creator, :class_name => "User"
   
+  has_many :favorites
+  
   validates_presence_of :name, :price, :description, :creator
   
   has_attached_file :photo,

@@ -1,3 +1,5 @@
 class Favorite < ActiveRecord::Base
-  validates_presence_of :user, :destroyer 
+  belongs_to :user
+  has_one :destroyer  
+  validates_presence_of :user, :destroyer  
 end
