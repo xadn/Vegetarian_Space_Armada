@@ -28,11 +28,12 @@ class Destroyer < ActiveRecord::Base
   end
   
   def create_favorite
-    Favorite.create!(:user => current_user, :destroyer => self)
+    @favorite = Favorite.create!(:user => current_user, :destroyer => self)
   end
   
   def delete_favorite
     favorite.delete!
+    #@favorite = nil
   end
   
   def current_user_session
