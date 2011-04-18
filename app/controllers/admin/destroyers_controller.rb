@@ -1,51 +1,61 @@
 class Admin::DestroyersController < Admin::AdminController
   
-  #before_filter :only => [:show, :edit, :update, :destroy]
+  before_filter :find_destroyer, :only => [:show, :edit, :update, :destroy]
   
-  def index
-    @destroyers = Destroyer.all
-  end
-
-  def show
-    respond_to do |format|
-      format.html
-      format.xml {render :xml => @shild }
+  private 
+  
+    def namespaced_url(component=nil)
+      admin_destroyers_url(component)
     end
-  end
-
-  def new
-    @destroyer = Destroyer.new
-  end
-
-  def create
-    @destroyer = Destroyer.new(params[:destroyer])
-    @destroyer.user = current_user
-    if @destroyer.save
-      flash[:notice] = "Successfully created destroyer."
-      redirect_to admin_destroyers_url(@destroyer)
-    else
-      render :action => 'new'
+  
+    def find_destroyer
+      @destroyer = Destroyer.find(params[:id])
     end
-  end
-
-  def edit
-    @destroyer = Destroyer.find(params[:id])
-  end
-
-  def update
-    @destroyer = Destroyer.find(params[:id])
-    if @destroyer.update_attributes(params[:destroyer])
-      flash[:notice] = "Successfully updated destroyer."
-      redirect_to @destroyer
-    else
-      render :action => 'edit'
+  
+  public
+  
+    def index
+      @destroyers = Destroyer.all
     end
-  end
 
-  def destroy
-    @destroyer = Destroyer.find(params[:id])
-    @destroyer.destroy
-    flash[:notice] = "Successfully destroyed destroyer."
-    redirect_to admin_destroyers_url
-  end
+    def show
+      respond_to do |format|
+        format.html
+        format.xml {render :xml => @destroyer }
+      end
+    end
+
+    def new
+      @destroyer = Destroyer.new
+    end
+
+    def create
+      @destroyer = Destroyer.new(params[:destroyer])
+      @destroyer.user = current_user
+      if @destroyer.save
+        flash[:notice] = "Successfully created destroyer."
+        redirect_to namespaced_url(@destroyer)
+      else
+        render :action => 'new'
+      end
+    end
+
+    def edit
+    end
+
+    def update
+      if @destroyer.update_attributes(params[:destroyer])
+        flash[:notice] = "Successfully updated destroyer."
+        redirect_to @destroyer
+      else
+        render :action => 'edit'
+      end
+    end
+
+    def destroy
+      @destroyer.destroy
+      flash[:notice] = "Successfully destroyed destroyer."
+      redirect_to namespaced_url
+    end
+    
 end
