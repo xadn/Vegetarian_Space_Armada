@@ -1,5 +1,7 @@
 class Destroyer < ActiveRecord::Base
   
+  attr_accessor :photo_file_name
+  
   belongs_to :creator, :class_name => "User"
   
   validates_presence_of :name, :price, :description, :creator
