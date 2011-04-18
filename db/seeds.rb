@@ -19,7 +19,7 @@ andy = User.new(
     :password_confirmation => 'changeme',
     :role => r
   )
-andy.save_without_session_maintenance
+
 
 amanreet = User.new(
     :first_name => 'Amanreet',
@@ -29,7 +29,7 @@ amanreet = User.new(
     :password_confirmation => 'changeme',
     :role => r
   )
-amanreet.save_without_session_maintenance
+
 
 yong = User.new(
     :first_name => 'Yong',
@@ -39,7 +39,7 @@ yong = User.new(
     :password_confirmation => 'changeme',
     :role => r
     )
-yong.save_without_session_maintenance
+
 
 john = User.new(
     :first_name => 'John',
@@ -49,41 +49,46 @@ john = User.new(
     :password_confirmation => 'password',
     :role => m
   )
-john.save_without_session_maintenance
+
 
 
 # Seed destroyers.
-Destroyer.create(
+Destroyer.create!(
     :name => "Enterprise",
     :price => 5000,
-    :user => andy,
+    :creator => andy,
     :description => "We'll pick you up!"
   )
 
-Destroyer.create(
+Destroyer.create!(
     :name => "Enterprise2",
     :price => 5000,
-    :user => john,
+    :creator => john,
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
     
-Destroyer.create(
+Destroyer.create!(
     :name => "Enterprise3",
     :price => 5000,
-    :user => john,
+    :creator => john,
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
 
-Destroyer.create(
+Destroyer.create!(
     :name => "Enterprise4",
     :price => 5000,
-    :user => john,
+    :creator => john,
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
 
-Destroyer.create(
+Destroyer.create!(
     :name => "Enterprise5",
     :price => 5000,
-    :user => john,
+    :creator => john,
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
+  
+andy.save_without_session_maintenance
+amanreet.save_without_session_maintenance
+yong.save_without_session_maintenance
+john.save_without_session_maintenance
