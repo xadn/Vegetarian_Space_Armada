@@ -31,7 +31,7 @@ class Admin::DestroyersController < Admin::AdminController
 
     def create
       @destroyer = Destroyer.new(params[:destroyer])
-      @destroyer.user = current_user
+      @destroyer.creator = current_user
       if @destroyer.save
         flash[:notice] = "Successfully created destroyer."
         redirect_to namespaced_url(@destroyer)

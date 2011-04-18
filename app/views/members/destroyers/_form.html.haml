@@ -1,4 +1,4 @@
-- form_for [:members, destroyer] do |f|
+- form_for [:members, destroyer], :html => { :multipart => true } do |f|
   = f.error_messages
   .form_left
     = image_tag destroyer.photo.url(:medium)
