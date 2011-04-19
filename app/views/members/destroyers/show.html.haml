@@ -1,5 +1,6 @@
-- content_for :title do
-  Destroyer
+%h2=@destroyer.name
+
+= render :partial => "by", :locals => {:destroyer => @destroyer}
 %p
   %strong Favorite:
   =h @destroyer.is_favorite?
@@ -8,12 +9,11 @@
   %strong Name:
   =h @destroyer.name
 %p
-  %strong Price:
-  =h @destroyer.price
-%p
   %strong Description:
   =h @destroyer.description
-
+%p
+  %strong Price:
+  =h @destroyer.price
 %p
   - if current_user.id == @destroyer.user_id
     = link_to "Edit", edit_members_destroyer_path(@destroyer)

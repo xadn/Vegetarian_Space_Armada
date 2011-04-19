@@ -23,7 +23,7 @@
     %tr
       %td= h destroyer.name
       %td= h destroyer.price
-      %td= h destroyer.description
+      %td= h truncate(destroyer.description, :length => 45)
       %td= link_to 'Show', members_destroyer_path(destroyer)
       - if current_user.id == destroyer.user_id
         %td= link_to 'Edit', edit_members_destroyer_path(destroyer)

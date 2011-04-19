@@ -17,7 +17,6 @@ class Members::DestroyersController < Members::MembersController
   public
   
     def index
-    	#@yers = Destroyer.find_all_by_creator_id(current_user.id)
       @destroyers = (Destroyer.find_all_by_user_id(current_user.id)).paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
     end
     
@@ -38,7 +37,7 @@ class Members::DestroyersController < Members::MembersController
       @destroyer.creator = current_user
       if @destroyer.save
         flash[:notice] = "Successfully created destroyer."
-        redirect_to namespaced_url(@destroyer)
+        redirect_to members_root_url
       else
       	flash[:error] = "Could not create game" 
         render :action => 'new'
@@ -49,9 +48,10 @@ class Members::DestroyersController < Members::MembersController
     end
 
     def update
+    	@destroyer.creator = current_user
       if @destroyer.update_attributes(params[:destroyer])
         flash[:notice] = "Successfully updated destroyer."
-        redirect_to @destroyer
+        redirect_to members_root_url
       else
         render :action => 'edit'
       end
@@ -60,7 +60,7 @@ class Members::DestroyersController < Members::MembersController
     def destroy
       @destroyer.destroy
       flash[:notice] = "Successfully destroyed destroyer."
-      redirect_to namespaced_url
+      redirect_to members_root_url
     end
     
 end
