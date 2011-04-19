@@ -4,6 +4,7 @@ class Members::MembersController < ApplicationController
   filter_access_to :all
 
   def index
+  	 @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
     render
   end
   

@@ -11,3 +11,24 @@
   %p Create a powerful armada of space ships to take over the galaxy!
 #sidebar
   %p sidebar
+  
+  
+= will_paginate @destroyers
+%table
+  %tr
+    %th Name
+    %th Price
+    %th Description
+  - for destroyer in @destroyers
+    %tr
+      %td= h destroyer.name
+      %td= h destroyer.price
+      %td= h destroyer.description
+      %td= link_to 'Show', members_destroyer_path(destroyer)
+      - if current_user.id == destroyer.user_id
+        %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
+        %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
+      %td= h destroyer.is_favorite?
+
+%p
+  %b= link_to "New Destroyer", new_members_destroyer_path

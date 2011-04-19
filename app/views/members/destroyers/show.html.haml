@@ -15,8 +15,9 @@
   =h @destroyer.description
 
 %p
-  = link_to "Edit", edit_members_destroyer_path(@destroyer)
-  |
-  = link_to "Destroy", members_destroyers_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
-  |
+  - if current_user.id == @destroyer.user_id
+    = link_to "Edit", edit_members_destroyer_path(@destroyer)
+    |
+    = link_to "Destroy", members_destroyers_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
+    |
   = link_to "View All", members_destroyers_path
