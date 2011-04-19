@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   helper_method :current_user_session, :current_user, :home_url_for
 
+DESTROYERS_PER_PAGE = 10
   # A simple route for the application home page or root_url.
   def show
+    @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
     render
   end
 

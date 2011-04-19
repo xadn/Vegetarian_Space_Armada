@@ -49,7 +49,7 @@ class Destroyer < ActiveRecord::Base
   end
   
   def to_s
-    name
+    self.name
   end
   
 end
