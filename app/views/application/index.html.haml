@@ -1,6 +1,10 @@
-- content_for :title do
-  Destroyers
-
+%h2 All Destroyers
+%p
+  = pluralize(@total_destroyers, "Destroyer")
+  as of
+  = Date.today.to_s(:datetime)
+  
+= will_paginate @destroyers
 %table
   %tr
     %th Name
@@ -11,4 +15,4 @@
       %td= h destroyer.name
       %td= h destroyer.price
       %td= h destroyer.description
-      %td= link_to 'Show', members_destroyer_path(destroyer)
+      %td= link_to 'Show', admin_destroyer_path(destroyer)

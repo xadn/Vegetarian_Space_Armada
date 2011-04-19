@@ -7,10 +7,14 @@ class ApplicationController < ActionController::Base
    DESTROYERS_PER_PAGE = 4
    
    @total_destroyers = Destroyer.count
+   
+   def index
+   	 @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+   	 render
+   end
   # A simple route for the application home page or root_url.
   def show
-    @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
-    render
+  	@destroyer = Destroyer.find(params[:id])
   end
 
   protected

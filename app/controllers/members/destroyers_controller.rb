@@ -2,6 +2,8 @@ class Members::DestroyersController < Members::MembersController
   
   before_filter :find_destroyer, :only => [:show, :edit, :update, :destroy]
   
+  DESTROYERS_PER_PAGE = 4
+  
   private 
   
     def namespaced_url(component=nil)
@@ -15,9 +17,10 @@ class Members::DestroyersController < Members::MembersController
   public
   
     def index
-      @destroyers = Destroyer.all
+    	#@yers = Destroyer.find_all_by_creator_id(current_user.id)
+      @destroyers = (Destroyer.find_all_by_user_id(current_user.id)).paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
     end
-
+    
     def show
       respond_to do |format|
         format.html
@@ -28,14 +31,16 @@ class Members::DestroyersController < Members::MembersController
     def new
       @destroyer = Destroyer.new
     end
-
+  
     def create
+    	params[:destroyer][:user_id] = current_user.id
       @destroyer = Destroyer.new(params[:destroyer])
       @destroyer.creator = current_user
       if @destroyer.save
         flash[:notice] = "Successfully created destroyer."
         redirect_to namespaced_url(@destroyer)
       else
+      	flash[:error] = "Could not create game" 
         render :action => 'new'
       end
     end

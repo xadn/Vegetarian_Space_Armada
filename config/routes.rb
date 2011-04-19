@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :favorites
 
 
-  map.root :controller => "application", :action => "show"
+  map.root :controller => "application", :action => "index"
   map.logout 'logout', :controller => "user_sessions", :action => "destroy"
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.resources :user_sessions, :only => [:new, :create, :destroy]

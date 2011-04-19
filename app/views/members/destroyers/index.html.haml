@@ -1,6 +1,6 @@
-- content_for :title do
-  Destroyers
+%h2 My Destroyers
 
+= will_paginate @destroyers
 %table
   %tr
     %th Name
@@ -16,4 +16,5 @@
       %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
       %td= h destroyer.is_favorite?
 
-%p= link_to "New Destroyer", new_members_destroyer_path
+%p
+  %b= link_to "New Destroyer", new_members_destroyer_path
