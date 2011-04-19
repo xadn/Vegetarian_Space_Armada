@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   
   has_many :destroyers 
   has_many :favorites
+  has_many :favorite_destroyers, :class_name => 'Destroyer', :through => :favorites
 
   default_scope :include => :role
   

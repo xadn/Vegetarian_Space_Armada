@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110418180339) do
     t.string   "name"
     t.float    "price"
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"
