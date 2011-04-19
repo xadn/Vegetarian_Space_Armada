@@ -41,6 +41,10 @@ class Admin::DestroyersController < Admin::AdminController
     end
 
     def edit
+      respond_to do |format|
+        format.html
+        format.xml {render :xml => @destroyer }
+      end
     end
 
     def update

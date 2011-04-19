@@ -1,5 +1,8 @@
 - content_for :title do
   Destroyer
+%p
+  %strong Favorite:
+  =h @destroyer.is_favorite?
 
 %p
   %strong Name:
