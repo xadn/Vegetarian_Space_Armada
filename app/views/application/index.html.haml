@@ -1,10 +1,6 @@
-%h2 All Destroyers
-%p
-  = pluralize(@total_destroyers, "Destroyer")
-  as of
-  = Date.today.to_s(:datetime)
-	
-= will_paginate @destroyers
+- content_for :title do
+  Destroyers
+
 %table
   %tr
     %th Name
