@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110417204824) do
+ActiveRecord::Schema.define(:version => 20110418165021) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -30,9 +30,13 @@ ActiveRecord::Schema.define(:version => 20110417204824) do
     t.string   "name"
     t.float    "price"
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "roles", :force => true do |t|

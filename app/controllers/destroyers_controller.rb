@@ -1,6 +1,9 @@
 class DestroyersController < ApplicationController
+	
+	DESTROYERS_PER_PAGE = 10
   def index
-    @destroyers = Destroyer.all
+    @destroyer = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+		
   end
 
   def show

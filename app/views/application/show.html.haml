@@ -1,2 +1,12 @@
-%h2 TODO
-%p Find me in app/views/application/show.html.haml
+- content_for :title do
+  Destroyer
+
+%p
+  %strong Name:
+  =h @destroyer.name
+%p
+  %strong Price:
+  =h @destroyer.price
+%p
+  %strong Description:
+  =h @destroyer.description
