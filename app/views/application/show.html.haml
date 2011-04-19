@@ -1,5 +1,18 @@
 - content_for :title do
-  Destroyer
+  Destroyers
+  
+%table
+  %tr
+    %th Name
+    %th Price
+    %th Description
+  - for destroyer in @destroyers
+    %tr
+      %td= h destroyer.name
+      %td= h destroyer.price
+      %td= h destroyer.description
+      %td= link_to 'Show', admin_destroyer_path(destroyer)
+      %td= link_to 'Edit', edit_admin_destroyer_path(destroyer)
+      %td= link_to 'Destroy', admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
 
-%p
-  =h @destroyer.name
+%p= link_to "New Destroyer", new_admin_destroyer_path

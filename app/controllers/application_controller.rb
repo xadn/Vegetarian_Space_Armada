@@ -6,9 +6,11 @@ class ApplicationController < ActionController::Base
   
    DESTROYERS_PER_PAGE = 10
 
+DESTROYERS_PER_PAGE = 10
   # A simple route for the application home page or root_url.
   def show
-  	@destroyer = Destroyer.all
+    @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+    render
   end
 
   protected
