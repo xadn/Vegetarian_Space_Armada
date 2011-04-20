@@ -17,9 +17,11 @@ class Members::FavoritesController < Members::MembersController
        if @favorite.save
         format.html { redirect_to :back }
         format.xml  { render :xml => @favorite, :status => :created, :location => @favorite }
+        format.js
        else
         format.html { redirect_to(:back, :notice => 'Unable to save favorite') }
         format.xml  { render :xml => @favorite.errors, :status => :unprocessable_entity }
+        format.js
        end
     end
   end
