@@ -8,11 +8,13 @@
 %table
   %tr
     %th Name
+    %th Creator
     %th Price
     %th Description
   - for destroyer in @destroyers
     %tr
       %td= h destroyer.name
+      %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= h destroyer.description
       %td= link_to 'Show', admin_destroyer_path(destroyer)
