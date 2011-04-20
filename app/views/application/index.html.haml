@@ -2,7 +2,7 @@
 %p
   = pluralize(@total_destroyers, "Destroyer")
   as of
-  = Time.now.to_s(:datetime)
+  = Time.now.to_s(:datelong)
   
 = will_paginate @destroyers
 %table

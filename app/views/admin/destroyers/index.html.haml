@@ -1,18 +1,22 @@
-- content_for :title do
-  Destroyers
+%h2 My Destroyers
 
+= will_paginate @destroyers
 %table
   %tr
     %th Name
+    %th Creator
     %th Price
     %th Description
   - for destroyer in @destroyers
     %tr
       %td= h destroyer.name
+      %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= h destroyer.description
-      %td= link_to 'Show', admin_destroyer_path(destroyer)
-      %td= link_to 'Edit', edit_admin_destroyer_path(destroyer)
-      %td= link_to 'Destroy', admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', members_destroyer_path(destroyer)
+      %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
+      %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
+      %td= h is_favorite?(destroyer)
 
-%p= link_to "New Destroyer", new_admin_destroyer_path
+%p
+  %b= link_to "New Destroyer", new_members_destroyer_path
