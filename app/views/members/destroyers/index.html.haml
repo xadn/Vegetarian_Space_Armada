@@ -14,7 +14,7 @@
       %td= link_to 'Show', members_destroyer_path(destroyer)
       %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
       %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      %td= h destroyer.is_favorite?
+      %td= h is_favorite?(destroyer)
 
 %p
   %b= link_to "New Destroyer", new_members_destroyer_path

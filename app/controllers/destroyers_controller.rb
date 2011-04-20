@@ -36,7 +36,7 @@ class DestroyersController < ApplicationController
       render :action => 'edit'
     end
   end
-
+  
   def destroy
     @destroyer = Destroyer.find(params[:id])
     @destroyer.destroy

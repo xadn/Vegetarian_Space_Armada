@@ -17,7 +17,7 @@ class Members::DestroyersController < Members::MembersController
   public
   
     def index
-      @destroyers = (Destroyer.find_all_by_user_id(current_user.id)).paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+      @destroyers = Destroyer.paginate_by_creator_id current_user.id, :order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE
     end
     
     def show

@@ -3,7 +3,7 @@
 = render :partial => "by", :locals => {:destroyer => @destroyer}
 %p
   %strong Favorite:
-  =h @destroyer.is_favorite?
+  =h 
 
 %p
   %strong Name:
@@ -15,7 +15,7 @@
   %strong Price:
   =h @destroyer.price
 %p
-  - if current_user.id == @destroyer.user_id
+  - if current_user == @destroyer.creator
     = link_to "Edit", edit_members_destroyer_path(@destroyer)
     |
     = link_to "Destroy", members_destroyers_path(@destroyer), :confirm => 'Are you sure?', :method => :delete

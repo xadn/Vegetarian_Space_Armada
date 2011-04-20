@@ -1,6 +1,6 @@
 %p
   created by
-  = User.find(@destroyer.user_id).first_name
-  = User.find(@destroyer.user_id).last_name
+  = User.find(@destroyer.creator).first_name
+  = User.find(@destroyer.creator).last_name
   on
   = @destroyer.created_at.to_s(:datelong)

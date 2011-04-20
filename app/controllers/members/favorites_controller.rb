@@ -3,7 +3,7 @@ class Members::FavoritesController < Members::MembersController
   # GET /favorites.xml
   
   def index
-    @favorites = Favorite.all
+    @favorites = current_user.favorites
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,14 +13,14 @@ class Members::FavoritesController < Members::MembersController
 
   # GET /favorites/1
   # GET /favorites/1.xml
-  # def show
-  #   @favorite = Favorite.find(params[:id])
-  # 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     format.xml  { render :xml => @favorite }
-  #   end
-  # end
+  def show
+    @favorite = Favorite.find(params[:id])
+  
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @favorite }
+    end
+  end
 
   # GET /favorites/new
   # GET /favorites/new.xml
@@ -57,19 +57,19 @@ class Members::FavoritesController < Members::MembersController
 
   # PUT /favorites/1
   # PUT /favorites/1.xml
-  # def update
-  #   @favorite = Favorite.find(params[:id])
-  # 
-  #   respond_to do |format|
-  #     if @favorite.update_attributes(params[:favorite])
-  #       format.html { redirect_to(@favorite, :notice => 'Favorite was successfully updated.') }
-  #       format.xml  { head :ok }
-  #     else
-  #       format.html { render :action => "edit" }
-  #       format.xml  { render :xml => @favorite.errors, :status => :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    @favorite = Favorite.find(params[:id])
+  
+    respond_to do |format|
+      if @favorite.update_attributes(params[:favorite])
+        format.html { redirect_to(@favorite, :notice => 'Favorite was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @favorite.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /favorites/1
   # DELETE /favorites/1.xml
