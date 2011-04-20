@@ -56,37 +56,35 @@ john = User.new(
 Destroyer.create!(
     :name => "Enterprise",
     :price => 5000,
-    :creator => andy,
+    :user_id => User.find_by_first_name("Andy").id),
     :description => "We'll pick you up!"
   )
 
 Destroyer.create!(
     :name => "Enterprise2",
     :price => 5000,
-    :user_id => 2,
-    :creator => john,
+    :user_id => User.find_by_first_name("John").id),
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
     
 Destroyer.create!(
     :name => "Enterprise3",
     :price => 5000,
-    :user_id => 2,
-    :creator => john,
+    :user_id => User.find_by_first_name("John").id),
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
 
 Destroyer.create!(
     :name => "Enterprise4",
     :price => 5000,
-    :creator => john,
+    :user_id => User.find_by_first_name("John").id),
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
 
 d5 = Destroyer.create!(
     :name => "Enterprise5",
     :price => 5000,
-    :creator => john,
+    :user_id => User.find_by_first_name("John").id),
     :description => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   )
   
