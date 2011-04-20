@@ -15,10 +15,10 @@ class Members::FavoritesController < Members::MembersController
 
     respond_to do |format|
        if @favorite.save
-        format.html { redirect_to(members_root_url, :notice => 'Favorite was successfully created.') }
+        format.html { redirect_to :back }
         format.xml  { render :xml => @favorite, :status => :created, :location => @favorite }
        else
-        format.html { redirect_to(members_root_url, :notice => 'Unable to create favorite') }
+        format.html { redirect_to(:back, :notice => 'Unable to save favorite') }
         format.xml  { render :xml => @favorite.errors, :status => :unprocessable_entity }
        end
     end
@@ -29,7 +29,7 @@ class Members::FavoritesController < Members::MembersController
     @favorite.destroy
 
     respond_to do |format|
-      format.html { redirect_to members_root_url }
+      format.html { redirect_to :back }
       format.xml  { head :ok }
     end
   end

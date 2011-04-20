@@ -30,10 +30,7 @@
       - if current_user == destroyer.creator
         %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
         %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      %td= is_favorite?(destroyer)
-      
-      
-      
+      %td= favorite_button(destroyer)
 
 %p
   %b= link_to "New Destroyer", new_members_destroyer_path

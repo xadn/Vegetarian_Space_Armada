@@ -1,14 +1,5 @@
 %h2=@destroyer.name
-
-/ = render :partial => "by", :locals => {:destroyer => @destroyer}
-/ 
-/ - form_for :favorite, :action => 'create' do |f|
-/   = f.hidden_field :user_id, :value => current_user.id
-/   = f.hidden_field :destroyer_id, :value => @destroyer.id
-/   %td= f.submit
-  
-%p
-  %strong Favorite:
+= favorite_button(@destroyer)
 
 %p
   %strong Name:
