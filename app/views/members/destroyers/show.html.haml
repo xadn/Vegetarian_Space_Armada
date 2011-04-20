@@ -1,8 +1,5 @@
 %h2=@destroyer.name
-
-= render :partial => "by", :locals => {:destroyer => @destroyer}
-%p
-  %strong Favorite:
+= favorite_button(@destroyer)
 
 %p
   %strong Name:

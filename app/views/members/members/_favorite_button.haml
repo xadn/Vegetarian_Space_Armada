@@ -1,0 +1,4 @@
+- form_for 'favorite', :url => {:controller => :favorites, :action => 'create'}  do |f|
+  = f.hidden_field :user_id, :value => current_user.id
+  = f.hidden_field :destroyer_id, :value => destroyer.id
+  %td= image_submit_tag('icon_small_star_inactive.png')
