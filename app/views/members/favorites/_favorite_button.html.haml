@@ -1,5 +1,4 @@
-%div{:id => "favorite_button#{destroyer.id}"}
-  - form_remote_for 'favorite', :url => {:controller => :favorites, :action => 'create'}  do |f|
-    = f.hidden_field :user_id, :value => current_user.id
-    = f.hidden_field :destroyer_id, :value => destroyer.id
-    %td= image_submit_tag('icon_small_star_inactive.png')
+- form_remote_for 'favorite', :url => {:controller => :favorites, :action => 'create'}, :html => {:id => favorite_div(destroyer)}  do |f|
+  = f.hidden_field :user_id, :value => current_user.id
+  = f.hidden_field :destroyer_id, :value => destroyer.id
+  %td= image_submit_tag('icon_small_star_inactive.png')
