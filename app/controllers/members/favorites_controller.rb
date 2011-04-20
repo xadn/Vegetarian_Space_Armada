@@ -28,11 +28,13 @@ class Members::FavoritesController < Members::MembersController
 
   def destroy
     @favorite = Favorite.find(params[:id])
+    @destroyer = @favorite.destroyer
     @favorite.destroy
 
     respond_to do |format|
       format.html { redirect_to :back }
       format.xml  { head :ok }
+      format.js
     end
   end
 end
