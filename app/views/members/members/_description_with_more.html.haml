@@ -1,0 +1,6 @@
+%td= truncate(destroyer.description, :length => 45)
+
+.description{:id => "description.#{destroyer.id}"}
+  %td= destroyer.description
+  
+%td= link_to_function "more", visual_effect(:toggle_slide, "description.#{destroyer.id}")
