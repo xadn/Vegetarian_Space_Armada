@@ -1,0 +1,4 @@
+- form_for [:members, favorite], :html => { :multipart => true } do |f|
+    = f.hidden_field_tag :user_id, current_user.id
+    = f.hidden_field_tag :destroyer_id, destroyer.id
+    = f.submit
