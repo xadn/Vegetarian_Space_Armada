@@ -30,11 +30,8 @@
       - if current_user == destroyer.creator
         %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
         %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      %td= h is_favorite?(destroyer)
-      - form_for 'favorite', :url => {:controller => :favorites, :action => 'create'}  do |f|
-        = f.hidden_field :user_id, :value => current_user.id
-        = f.hidden_field :destroyer_id, :value => destroyer.id
-        %td= f.submit
+      %td= is_favorite?(destroyer)
+      
       
       
 
