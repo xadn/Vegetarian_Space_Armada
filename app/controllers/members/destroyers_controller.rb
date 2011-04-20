@@ -32,7 +32,6 @@ class Members::DestroyersController < Members::MembersController
     end
   
     def create
-    	params[:destroyer][:user_id] = current_user.id
       @destroyer = Destroyer.new(params[:destroyer])
       @destroyer.creator = current_user
       if @destroyer.save
