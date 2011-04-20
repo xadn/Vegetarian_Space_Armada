@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.namespace :members do |members|
-    members.resources :favorites
+    members.resources :favorites, :collection => { :create => :post }
     members.resources :destroyers
     members.resources :users, :only => [:show, :edit, :update]
     members.root :controller => 'members', :action => 'index'

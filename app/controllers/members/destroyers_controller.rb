@@ -17,7 +17,6 @@ class Members::DestroyersController < Members::MembersController
   public
   
     def index
-      @favorite = Favorite.new
       @destroyers = Destroyer.paginate_by_creator_id current_user.id, :order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE
     end
     
