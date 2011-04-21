@@ -1,18 +1,17 @@
-- title "Destroyer"
+%h2=@destroyer.name
+
+= render :partial => "by", :locals => {:destroyer => @destroyer}
+%p
+  %strong Favorite:
 
 %p
   %strong Name:
   =h @destroyer.name
 %p
+  %strong Description:
+  =h @destroyer.description
+%p
   %strong Price:
   =h @destroyer.price
 %p
-  %strong Description:
-  =h @destroyer.description
-
-%p
-  = link_to "Edit", edit_destroyer_path(@destroyer)
-  |
-  = link_to "Destroy", @destroyer, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", destroyers_path
+  = link_to "View All", root_url
