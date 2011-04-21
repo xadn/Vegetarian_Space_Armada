@@ -18,6 +18,10 @@ class Members::DestroyersController < Members::MembersController
   
     def index
       @destroyers = Destroyer.paginate_by_creator_id current_user.id, :order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE
+      respond_to do |format|
+        format.html
+        format.xml {render :xml => @destroyers }
+      end
     end
     
     def show
@@ -29,37 +33,56 @@ class Members::DestroyersController < Members::MembersController
 
     def new
       @destroyer = Destroyer.new
+      
+      respond_to do |format|
+        format.html
+        format.xml  { render :xml => @destroyer }
+      end
     end
   
     def create
       @destroyer = Destroyer.new(params[:destroyer])
       @destroyer.creator = current_user
-      if @destroyer.save
-        flash[:notice] = "Successfully created destroyer."
-        redirect_to members_root_url
-      else
-      	flash[:error] = "Could not create game" 
-        render :action => 'new'
+      respond_to do |format|
+        if @destroyer.save
+          flash[:success] = 'Destroyer was successfully created.'
+          format.html { redirect_to namespaced_url }
+          format.xml  { render :xml => @destroyer, :status => :created, :location => @destroyer }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @destroyer.errors, :status => :unprocessable_entity }
+        end
       end
     end
 
     def edit
     end
 
-    def update
-    	@destroyer.creator = current_user
-      if @destroyer.update_attributes(params[:destroyer])
-        flash[:notice] = "Successfully updated destroyer."
-        redirect_to members_root_url
-      else
-        render :action => 'edit'
+    def update  
+      respond_to do |format|
+        if @destroyer.update_attributes(params[:destroyer])
+          flash[:success] = 'Destroyer was successfully updated.'
+          format.html { redirect_to namespaced_url(@destroyer) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @destroyer.errors, :status => :unprocessable_entity }
+        end
       end
     end
 
-    def destroy
-      @destroyer.destroy
-      flash[:notice] = "Successfully destroyed destroyer."
-      redirect_to members_root_url
+    def destroy      
+      respond_to do |format|
+        if @destroyer.destroy
+          flash[:success] = 'Destroyer was successfully destroyed.'        
+          format.html { redirect_to namespaced_url }
+          format.xml  { head :ok }
+        else
+          flash[:error] = 'Destroyer could not be destroyed.'
+          format.html { redirect_to namespaced_url }
+          format.xml  { head :unprocessable_entity }
+        end
+      end
     end
     
 end
