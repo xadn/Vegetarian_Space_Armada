@@ -1,1 +1,3 @@
-page.replace_html favorite_div(@favorite.destroyer), :partial => "/members/favorites/unfavorite_button", :locals => {:favorite => @favorite}
+page[favorite_div(@favorite.destroyer)].replace_html :partial => "/members/favorites/unfavorite_button", :locals => {:favorite => @favorite}
+# page.replace_html :notice, flash[:notice]
+# flash.discard

@@ -17,6 +17,7 @@ class Members::FavoritesController < Members::MembersController
 
     respond_to do |format|
        if @favorite.save
+        flash[:notice] = "#{@favorite.destroyer} was added to your favorites."
         format.html { redirect_to :back }
         format.xml  { render :xml => @favorite, :status => :created, :location => @favorite }
         format.js
