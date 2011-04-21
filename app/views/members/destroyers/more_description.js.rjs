@@ -1,0 +1,1 @@
+page[content].visual_effect(:toggle_blind)
