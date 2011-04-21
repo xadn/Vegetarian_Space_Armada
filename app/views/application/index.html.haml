@@ -16,5 +16,5 @@
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
-      %td= h destroyer.description
+      %td= description_and_more(destroyer)
       %td= link_to 'Show', destroyer_url(destroyer)

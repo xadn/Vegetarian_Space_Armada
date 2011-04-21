@@ -23,8 +23,7 @@
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
-      %td
-        = render :partial => 'description', :locals => {:destroyer => destroyer}
+      %td= description_and_more(destroyer)
       %td= link_to 'Show', members_destroyer_path(destroyer)
       - if current_user == destroyer.creator
         %td= link_to 'Edit', edit_members_destroyer_path(destroyer)

@@ -8,12 +8,17 @@ module DestroyersHelper
     "more_link#{destroyer.id}"
   end
   
+  def description_and_more(destroyer)
+    render :partial => '/destroyers/description', :locals => {:destroyer => destroyer}
+  end
+  
   def toggle_more(destroyer)
-    link_to_function("more...", :id => "more_link") do |page|
-       page[ destroyer_div(destroyer) ].toggle
-       page["#{destroyer_div(destroyer)}_more"].toggle
-       #page[ more_link_div(destroyer) ].replace_html "Show me less"
+    if (destroyer.description.length > 45)
+      link_to_function "more...", :id => more_link_div(destroyer) do |page|
+         page[ destroyer_div(destroyer) ].toggle
+         page["#{destroyer_div(destroyer)}_more"].toggle
+      end
     end
   end
-
+  
 end
