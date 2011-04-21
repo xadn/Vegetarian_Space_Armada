@@ -1,0 +1,20 @@
+%h2 All Favorites
+
+%p
+  = pluralize(@favorites.count, "Favorite")
+  as of
+  = Time.now.to_s(:datelong)
+  
+%table
+  %tr
+    %th Name
+    %th Creator
+    %th Price
+    %th Description
+  - for favorite in @favorites
+    %tr
+      %td= h destroyer.name
+      %td= h = User.find(destroyer.creator).full_name
+      %td= h destroyer.price
+      %td= description_and_more(destroyer)
+      %td= link_to 'Show', destroyer_url(destroyer)
