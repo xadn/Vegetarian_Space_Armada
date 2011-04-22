@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :only => [:new, :create]
 
   map.namespace :admin do |admin|
+    admin.resources :favorites, :collection => { :create => :post }
     admin.resources :roles
     admin.resources :users
     admin.resources :destroyers

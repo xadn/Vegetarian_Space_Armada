@@ -23,18 +23,11 @@
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= h truncate(destroyer.description, :length => 45)
-<<<<<<< HEAD
-      %td= link_to 'Show', admin_destroyer_path(destroyer)
-      %td= link_to 'Edit', edit_admin_destroyer_path(destroyer)
-      %td= link_to 'Destroy', admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      %td
-        .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
-=======
       %td= link_to image_tag("icon_small_show.png", :border=>0), admin_destroyer_path(destroyer)
       %td= link_to image_tag("icon_small_edit.png", :border=>0), edit_admin_destroyer_path(destroyer)
       %td= link_to image_tag("icon_small_delete.png", :border=>0), admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      /%td= .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
->>>>>>> 30fb668005e9d56d5bc62ea3e96c133fd50410db
+      %td
+        .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
 
 %p#newdest
   %b= link_to "New Destroyer", new_admin_destroyer_path
