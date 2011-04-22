@@ -1,0 +1,8 @@
+%tr
+  %td= h user
+  %td= user.email
+  /%td= user.role
+  %td
+    = link_to image_tag('icon_small_show.png'), members_user_path(user)
+    = link_to image_tag('icon_small_edit.png'), edit_members_user_path(user)
+    = link_to image_tag('icon_small_delete.png'), members_user_path(user), :confirm => 'Are you sure?', :method => :delete

@@ -1,6 +1,7 @@
 # Using declarative_authorization.
 authorization do
   role :member do
+    has_permission_on :members_user, :to => :manage
     has_permission_on :members_members, :to => :read
     has_permission_on :members_destroyers, :to => :manage
     has_permission_on :members_favorites, :to => :manage
