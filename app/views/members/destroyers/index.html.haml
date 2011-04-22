@@ -2,17 +2,18 @@
 
 = will_paginate @destroyers
 %table
-  %tr
-    %th Name
-    %th Creator
-    %th Price
-    %th Description
   - for destroyer in @destroyers
     %tr
-      %td= h destroyer.name
-      %td= h = User.find(destroyer.creator).full_name
-      %td= h destroyer.price
-      %td= h destroyer.description
+      %th image
+      %th
+        = h link_to destroyer.name, members_destroyer_path(destroyer)
+        by
+        = h = User.find(destroyer.creator).full_name
+        (
+        = h destroyer.price
+        ArmadaBucks)
+        %br
+        = h destroyer.description
       %td= link_to 'Show', members_destroyer_path(destroyer)
       %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
       %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
