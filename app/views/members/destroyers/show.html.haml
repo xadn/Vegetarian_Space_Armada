@@ -1,5 +1,9 @@
 %h2=@destroyer.name
-= favorite_button(@destroyer)
+%p
+  created by
+  = User.find(@destroyer.creator).full_name
+  on
+  = @destroyer.created_at.to_s(:datelong)
 
 %p
   %strong Name:
@@ -11,10 +15,10 @@
   %strong Price:
   =h @destroyer.price
 %p
+  = link_to image_tag("icon_small_larrow.png", :border=>0) + ' back to list', members_destroyers_path
   - if current_user == @destroyer.creator
-
-    = link_to "Edit", edit_members_destroyer_path(@destroyer)
     |
-    = link_to "Destroy", members_destroyers_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
+    = link_to image_tag("icon_small_edit.png", :border=>0) + ' edit', edit_members_destroyer_path(@destroyer)
     |
-  = link_to "View All", members_destroyers_path
+    = link_to image_tag("icon_small_delete.png", :border=>0) + ' delete', members_destroyers_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
+  .star{:id => favorite_div(@destroyer)}= favorite_button(@destroyer)

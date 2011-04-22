@@ -2,6 +2,10 @@
   Members Home
 
 %h2 All Destroyers
+%p 
+  = pluralize(@destroyers.count, "Destroyer")
+  as of 
+  = Time.now.to_s(:datelong)
 
 #pagination
   = will_paginate @destroyers
