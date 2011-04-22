@@ -1,16 +1,16 @@
 - content_for :title do
   Administration Home
 
-
-%h2 Administration Home
-#main
-  %p 
-    This is the administration interface for the 
-    =APP_TITLE 
-    application.
-  %p Use the tabs above to manage users and roles.
+%h2 All Destroyers
   
-= will_paginate @destroyers
+%p 
+  = pluralize(@destroyers.count, "Destroyer")
+  as of 
+  = Time.now.to_s(:datelong)
+
+#pagination
+  = will_paginate @destroyers
+  
 %table
   %tr
     %th Name
@@ -23,10 +23,10 @@
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= h truncate(destroyer.description, :length => 45)
-      %td= link_to 'Show', admin_destroyer_path(destroyer)
-      %td= link_to 'Edit', edit_admin_destroyer_path(destroyer)
-      %td= link_to 'Destroy', admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to image_tag("icon_small_show.png", :border=>0), admin_destroyer_path(destroyer)
+      %td= link_to image_tag("icon_small_edit.png", :border=>0), edit_admin_destroyer_path(destroyer)
+      %td= link_to image_tag("icon_small_delete.png", :border=>0), admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
       /%td= .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
 
-%p
+%p#newdest
   %b= link_to "New Destroyer", new_admin_destroyer_path

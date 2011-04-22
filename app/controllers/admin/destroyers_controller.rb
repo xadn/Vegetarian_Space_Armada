@@ -1,6 +1,7 @@
 class Admin::DestroyersController < Admin::AdminController
 
 before_filter :find_destroyer, :only => [:show, :edit, :update, :destroy]
+before_filter :set_return, :only => [:edit]
 
 DESTROYERS_PER_PAGE = 4
 
@@ -12,6 +13,10 @@ private
 
   def find_destroyer
     @destroyer = Destroyer.find(params[:id])
+  end
+  
+  def set_return
+    session[:return_to] = request.referer
   end
 
 public
