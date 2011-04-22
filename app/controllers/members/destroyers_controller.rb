@@ -67,7 +67,7 @@ class Members::DestroyersController < Members::MembersController
       respond_to do |format|
         if @destroyer.update_attributes(params[:destroyer])
           flash[:success] = 'Destroyer was successfully updated.'
-          format.html { redirect_to namespaced_url(@destroyer) }
+          format.html { redirect_to members_destroyer_path(@destroyer) }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
