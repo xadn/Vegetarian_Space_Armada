@@ -1,0 +1,1 @@
+page[favorite_div(@favorite.destroyer)].replace_html :partial => "/members/favorites/unfavorite_button", :locals => {:favorite => @favorite}

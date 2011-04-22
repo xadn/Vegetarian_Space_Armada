@@ -12,10 +12,11 @@
   %strong Description:
   =h @destroyer.description
 %p
-  %strong Price:
+  %strong Cost:
   =h @destroyer.price
+  ArmadaBucks
 %p
-  = link_to image_tag("icon_small_larrow.png", :border=>0) + ' back to list', members_destroyers_path
+  = link_to image_tag("icon_small_larrow.png", :border=>0) + ' back to list', :back
   - if current_user == @destroyer.creator
     |
     = link_to image_tag("icon_small_edit.png", :border=>0) + ' edit', edit_members_destroyer_path(@destroyer)
