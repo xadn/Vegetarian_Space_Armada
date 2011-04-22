@@ -1,0 +1,3 @@
+.description{ :id => destroyer_div(destroyer) }= truncate(destroyer.description, :length => 45)
+.description{ :id => "#{destroyer_div(destroyer)}_more", :style => 'display: none' }= destroyer.description
+.more_link{ :id => more_link_div(destroyer) }= toggle_more(destroyer)

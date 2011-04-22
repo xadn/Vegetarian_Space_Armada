@@ -1,21 +1,20 @@
-%h2 All Destroyers
+%h2 All Favorites
+
 %p
-  = pluralize(@total_destroyers, "Destroyer")
+  = pluralize(@favorites.count, "Favorite")
   as of
   = Time.now.to_s(:datelong)
   
-= will_paginate @destroyers
 %table
   %tr
     %th Name
     %th Creator
     %th Price
     %th Description
-  - for destroyer in @destroyers
+  - for favorite in @favorites
     %tr
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= description_and_more(destroyer)
       %td= link_to 'Show', destroyer_url(destroyer)
-

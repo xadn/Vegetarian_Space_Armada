@@ -10,7 +10,6 @@
     application.
   %p Create a powerful armada of space ships to take over the galaxy!
   
-  = link_to_function "more", visual_effect(:toggle_slide, "sidebar")
   
 = will_paginate @destroyers
 %table
@@ -24,12 +23,13 @@
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
-      = render :partial => 'description_with_more', :locals => {:destroyer => destroyer}
+      %td= description_and_more(destroyer)
       %td= link_to 'Show', members_destroyer_path(destroyer)
       - if current_user == destroyer.creator
         %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
         %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      %td= favorite_button(destroyer)
+      %td
+        .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
 
 %p
   %b= link_to "New Destroyer", new_members_destroyer_path

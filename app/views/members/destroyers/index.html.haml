@@ -2,22 +2,23 @@
 
 = will_paginate @destroyers
 %table
+  %tr
+    %th Name
+    %th Creator
+    %th Price
+    %th Description
   - for destroyer in @destroyers
     %tr
-      %th image
-      %th
-        = h link_to destroyer.name, members_destroyer_path(destroyer)
-        by
-        = h = User.find(destroyer.creator).full_name
-        (
-        = h destroyer.price
-        ArmadaBucks)
-        %br
-        = h destroyer.description
+      %td= h destroyer.name
+      %td= h = User.find(destroyer.creator).full_name
+      %td= h destroyer.price
+      %td= description_and_more(destroyer)
       %td= link_to 'Show', members_destroyer_path(destroyer)
-      %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
-      %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      %td= favorite_button(destroyer)
+      - if current_user == destroyer.creator
+        %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
+        %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
+      %td
+        .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
 
 %p
   %b= link_to "New Destroyer", new_members_destroyer_path

@@ -1,46 +1,35 @@
 class DestroyersController < ApplicationController
-	
-	DESTROYERS_PER_PAGE = 10
+
+before_filter :find_destroyer, :only => [:show]
+
+DESTROYERS_PER_PAGE = 4
+
+private 
+
+  def namespaced_url(component=nil)
+    destroyers_url(component)
+  end
+
+  def find_destroyer
+    @destroyer = Destroyer.find(params[:id])
+  end
+
+public
+
   def index
-    @destroyer = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+    @destroyers = Destroyer.paginate_by_creator_id current_user.id, :order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE
+    respond_to do |format|
+      format.html
+      format.xml {render :xml => @destroyers }
+    end
   end
 
   def show
-    @destroyer = Destroyer.find(params[:id])
-  end
-
-  def new
-    @destroyer = Destroyer.new
-  end
-
-  def create
-    @destroyer = Destroyer.new(params[:destroyer])
-    if @destroyer.save
-      flash[:notice] = "Successfully created destroyer."
-      redirect_to @destroyer
-    else
-      render :action => 'new'
+    respond_to do |format|
+      format.html
+      format.xml {render :xml => @destroyer }
     end
   end
 
-  def edit
-    @destroyer = Destroyer.find(params[:id])
   end
 
-  def update
-    @destroyer = Destroyer.find(params[:id])
-    if @destroyer.update_attributes(params[:destroyer])
-      flash[:notice] = "Successfully updated destroyer."
-      redirect_to @destroyer
-    else
-      render :action => 'edit'
-    end
-  end
-  
-  def destroy
-    @destroyer = Destroyer.find(params[:id])
-    @destroyer.destroy
-    flash[:notice] = "Successfully destroyed destroyer."
-    redirect_to destroyers_url
-  end
-end

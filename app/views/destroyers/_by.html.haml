@@ -1,0 +1,5 @@
+%p
+  created by
+  = User.find(@destroyer.creator).full_name
+  on
+  = @destroyer.created_at.to_s(:datelong)

@@ -23,11 +23,10 @@
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= h truncate(destroyer.description, :length => 45)
-      %td= link_to 'Show', members_destroyer_path(destroyer)
-      - if current_user == destroyer.creator
-        %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
-        %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      %td= h is_favorite?(destroyer)
+      %td= link_to 'Show', admin_destroyer_path(destroyer)
+      %td= link_to 'Edit', edit_admin_destroyer_path(destroyer)
+      %td= link_to 'Destroy', admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
+      %td= favorite_button(destroyer)
 
 %p
-  %b= link_to "New Destroyer", new_members_destroyer_path
+  %b= link_to "New Destroyer", new_admin_destroyer_path
