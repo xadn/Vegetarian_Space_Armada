@@ -80,11 +80,11 @@ public
     respond_to do |format|
       if @destroyer.destroy
         flash[:success] = 'Destroyer was successfully destroyed.'        
-        format.html { redirect_to namespaced_url }
+        format.html { redirect_to :back }
         format.xml  { head :ok }
       else
         flash[:error] = 'Destroyer could not be destroyed.'
-        format.html { redirect_to namespaced_url }
+        format.html { redirect_to :back }
         format.xml  { head :unprocessable_entity }
       end
     end
