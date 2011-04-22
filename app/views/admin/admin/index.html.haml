@@ -26,7 +26,8 @@
       %td= link_to 'Show', admin_destroyer_path(destroyer)
       %td= link_to 'Edit', edit_admin_destroyer_path(destroyer)
       %td= link_to 'Destroy', admin_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
-      /%td= .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
+      %td
+        .star{:id => favorite_div(destroyer)}= favorite_button(destroyer)
 
 %p
   %b= link_to "New Destroyer", new_admin_destroyer_path
