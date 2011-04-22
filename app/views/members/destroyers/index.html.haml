@@ -16,7 +16,7 @@
     %th Description
   - for destroyer in @destroyers
     %tr
-      %td= image_tag destroyer.photo.url(:medium)
+      %td= image_tag(destroyer.photo.url(:medium))
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
