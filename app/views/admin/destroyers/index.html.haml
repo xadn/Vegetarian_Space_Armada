@@ -12,7 +12,7 @@
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
-      %td= h destroyer.description
+      %td description_and_more(destroyer)
       %td= link_to 'Show', members_destroyer_path(destroyer)
       %td= link_to 'Edit', edit_members_destroyer_path(destroyer)
       %td= link_to 'Destroy', members_destroyer_path(destroyer), :confirm => 'Are you sure?', :method => :delete
