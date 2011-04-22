@@ -31,3 +31,7 @@
 		
 %p#newdest
   %b= link_to "New Destroyer", new_members_destroyer_path
+  
+-@favorites = Favorite.find_all_by_destroyer_id(@destroyers[1].id)
+-@favorites.each do |f|
+  =f.user_id

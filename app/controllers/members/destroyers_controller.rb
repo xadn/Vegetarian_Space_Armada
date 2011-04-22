@@ -51,7 +51,7 @@ class Members::DestroyersController < Members::MembersController
       respond_to do |format|
         if @destroyer.save
           flash[:success] = 'Destroyer was successfully created.'
-          format.html { redirect_to namespaced_url }
+          format.html { redirect_to members_destroyer_path(@destroyer) }
           format.xml  { render :xml => @destroyer, :status => :created, :location => @destroyer }
         else
           format.html { render :action => "new" }
@@ -76,9 +76,13 @@ class Members::DestroyersController < Members::MembersController
       end
     end
 
-    def destroy      
+    def destroy
+			@favorites = Favorite.find_all_by_destroyer_id(@destroyer.id)      
       respond_to do |format|
         if @destroyer.destroy
+        	@favorites.each do |f|
+        		f.destroy
+        	end
           flash[:success] = 'Destroyer was successfully destroyed.'        
           format.html { redirect_to :back }
           format.xml  { head :ok }
