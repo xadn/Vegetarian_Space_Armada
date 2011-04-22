@@ -12,9 +12,10 @@
     %th Price
     %th Description
   - for favorite in @favorites
+    - destroyer = Destroyer.find_by_id(favorite.destroyer_id)
     %tr
       %td= h destroyer.name
-      %td= h = User.find(destroyer.creator).full_name
+      %td= h User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= description_and_more(destroyer)
       %td= link_to 'Show', destroyer_url(destroyer)
