@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :role, :counter_cache => true
   
   has_many :destroyers 
-  has_many :favorites
+  has_many :favorites, :dependent => :destroy
   has_many :favorite_destroyers, :class_name => 'Destroyer', :through => :favorites
 
   default_scope :include => :role
@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   validates_presence_of :role
 
   after_validation :assign_default_role
-  
-  before_destroy :destroy_favorites
   
   # returns a persons full name
   def full_name
@@ -50,10 +48,6 @@ class User < ActiveRecord::Base
       self.role = Role.find_by_name('member') if role_id.blank?
     end
     
-    def destroy_favorites
-      self.favorites.destroy_all
-    end
-
 end
 
 
