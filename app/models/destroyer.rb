@@ -1,6 +1,6 @@
 class Destroyer < ActiveRecord::Base
   
-  attr_accessor :photo_file_name
+  #attr_accessor :photo_file_name
   
   belongs_to :creator, :class_name => "User"
   has_many :users, :through => :favorites
