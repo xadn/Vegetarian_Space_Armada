@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.role = Role.find_by_name('member')
     respond_to do |format|
       if @user.save
         flash[:success] = 'User was successfully created.'
