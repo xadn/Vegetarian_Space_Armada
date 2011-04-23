@@ -13,15 +13,7 @@ class Destroyer < ActiveRecord::Base
   
   before_destroy :destroy_favorites
   
-  has_attached_file :photo,
-                     :styles => {
-                         :thumb => ["72x72#"],
-                         :medium => ["300x300#"]
-                       },
-                     :default_url => '/images/default_destroyer.png',
-                     :storage => :s3,
-                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                     :path => "cs446/vegetarians/#{Rails.env}/:attachment/:id/:style.:extension"
+  has_attached_file :photo, :default_url => '/images/default_destroyer.jpg', :storage => :s3, :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", :path => "cs446/vegetarians/#{Rails.env}/:attachment/:id/:style.:extension"
   
   def to_s
     self.name
