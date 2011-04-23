@@ -1,21 +1,28 @@
 %h2 All Destroyers
 %p
-  = pluralize(@total_destroyers, "Destroyer")
+  = pluralize(@destroyers.count, "Destroyer")
   as of
   = Time.now.to_s(:datelong)
   
-= will_paginate @destroyers
+#pagination
+  = will_paginate @destroyers
+%br
+
 %table
   %tr
+    %th
     %th Name
     %th Creator
     %th Price
     %th Description
   - for destroyer in @destroyers
     %tr
+      %td= image_tag(destroyer.photo.url)
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
       %td= description_and_more(destroyer)
       %td= link_to 'Show', destroyer_url(destroyer)
-
+      
+%p#newdest
+  %b= link_to "New Destroyer", new_members_destroyer_path

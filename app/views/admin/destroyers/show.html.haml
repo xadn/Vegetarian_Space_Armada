@@ -1,6 +1,9 @@
 %h2=@destroyer.name
 
 = render :partial => "by", :locals => {:destroyer => @destroyer}
+
+= image_tag(@destroyer.photo.url)
+
 %p
   %strong Name:
   =h @destroyer.name
