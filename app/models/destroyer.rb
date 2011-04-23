@@ -18,7 +18,7 @@ class Destroyer < ActiveRecord::Base
                         :thumb => ["72x72#"],
                         :medium => ["300x300#"]
                       },
-                    :default_url => '/images/default_shield.jpg',
+                    :default_url => '/images/default_destroyer.jpg',
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
                     :path => "cs446/vegetarians/#{Rails.env}/:attachment/:id/:style.:extension"
