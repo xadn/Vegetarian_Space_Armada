@@ -80,9 +80,9 @@ public
   	@favorites = Favorite.find_all_by_destroyer_id(@destroyer.id)    
     respond_to do |format|
       if @destroyer.destroy
-      	@favorites.each do |f|
-        		f.destroy
-        end
+        # @favorites.each do |f|
+        #     f.destroy
+        # end
         flash[:success] = 'Destroyer was successfully destroyed.'        
         format.html { redirect_to :back }
         format.xml  { head :ok }

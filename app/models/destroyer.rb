@@ -11,11 +11,13 @@ class Destroyer < ActiveRecord::Base
   
   validates_presence_of :name, :price, :description, :creator
   
+  before_destroy :destroy_favorites
+  
   has_attached_file :photo,
-                     # :styles => {
-                     #     :thumb => ["72x72#"],
-                     #     :medium => ["300x300#"]
-                     #   },
+                     :styles => {
+                         :thumb => ["72x72#"],
+                         :medium => ["300x300#"]
+                       },
                      :default_url => '/images/default_destroyer.png',
                      :storage => :s3,
                      :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
@@ -24,5 +26,11 @@ class Destroyer < ActiveRecord::Base
   def to_s
     self.name
   end
+  
+  private
+  
+    def destroy_favorites
+      self.favorites.destroy_all
+    end
   
 end

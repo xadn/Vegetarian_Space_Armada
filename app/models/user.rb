@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   after_validation :assign_default_role
   
+  before_destroy :destroy_favorites
+  
   # returns a persons full name
   def full_name
   	first_name + " " + last_name
@@ -46,6 +48,10 @@ class User < ActiveRecord::Base
 
     def assign_default_role
       self.role = Role.find_by_name('member') if role_id.blank?
+    end
+    
+    def destroy_favorites
+      self.favorites.destroy_all
     end
 
 end
