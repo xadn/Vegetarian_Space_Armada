@@ -3,12 +3,14 @@
 = will_paginate @destroyers
 %table
   %tr
+    %th
     %th Name
     %th Creator
     %th Price
     %th Description
   - for destroyer in @destroyers
     %tr
+      %td= image_tag(destroyer.photo.url)
       %td= h destroyer.name
       %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price

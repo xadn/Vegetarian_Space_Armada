@@ -3,6 +3,7 @@
   =@destroyer.name
 
 = render :partial => "by", :locals => {:destroyer => @destroyer}
+= image_tag(@destroyer.photo.url)
 = render :partial => "form", :locals => {:destroyer => @destroyer}
 
 %p
