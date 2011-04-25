@@ -19,5 +19,5 @@
     |
     = link_to image_tag("icon_small_edit.png", :border=>0) + ' edit', edit_members_destroyer_path(@destroyer)
     |
-    = link_to image_tag("icon_small_delete.png", :border=>0) + ' delete', members_destroyers_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
+    = link_to image_tag("icon_small_delete.png", :border=>0) + ' delete', members_destroyer_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
   .star{:id => favorite_div(@destroyer)}= favorite_button(@destroyer)

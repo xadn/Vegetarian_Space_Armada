@@ -77,18 +77,14 @@ class Members::DestroyersController < Members::MembersController
     end
 
     def destroy
-			@favorites = Favorite.find_all_by_destroyer_id(@destroyer.id)      
       respond_to do |format|
         if @destroyer.destroy
-          # @favorites.each do |f|
-          #   f.destroy
-          # end
           flash[:success] = 'Destroyer was successfully destroyed.'        
-          format.html { redirect_to :back }
+          format.html { redirect_to root_url }
           format.xml  { head :ok }
         else
           flash[:error] = 'Destroyer could not be destroyed.'
-          format.html { redirect_to :back }
+          format.html { redirect_to root_url }
           format.xml  { head :unprocessable_entity }
         end
       end
