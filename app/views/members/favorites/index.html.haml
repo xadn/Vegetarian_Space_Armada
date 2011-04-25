@@ -1,7 +1,7 @@
 %h2 All Favorites
 
 %p
-  = pluralize(@favorites.count, "Favorite")
+  = pluralize(@total_favorites, "Favorite")
   as of
   = Time.now.to_s(:datelong)
   

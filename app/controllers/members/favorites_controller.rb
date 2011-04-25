@@ -3,6 +3,7 @@ class Members::FavoritesController < Members::MembersController
   FAVORITES_PER_PAGE = 5
   
   def index
+  	@total_favorites = current_user.favorites.count
     @favorites = current_user.favorites.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => FAVORITES_PER_PAGE, :include => :destroyer)
 
     respond_to do |format|
