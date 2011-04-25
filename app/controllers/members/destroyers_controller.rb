@@ -23,6 +23,7 @@ class Members::DestroyersController < Members::MembersController
   
     def index
       @destroyers = Destroyer.paginate_by_creator_id current_user.id, :order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE
+      @total_destroyers = Destroyer.find_all_by_creator_id(current_user.id).count
       respond_to do |format|
         format.html
         format.xml {render :xml => @destroyers }

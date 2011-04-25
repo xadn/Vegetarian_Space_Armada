@@ -22,6 +22,7 @@ private
 public
 
   def index
+  	@total_destroyers = Destroyer.find_all_by_creator_id(current_user.id).count
     @destroyers = Destroyer.paginate_by_creator_id current_user.id, :order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE
     respond_to do |format|
       format.html

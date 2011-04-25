@@ -6,7 +6,8 @@ class Members::MembersController < ApplicationController
   DESTROYERS_PER_PAGE = 4
   
   def index
-  	 @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+   	@total_destroyers = Destroyer.count
+  	@destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
     render
   end
   

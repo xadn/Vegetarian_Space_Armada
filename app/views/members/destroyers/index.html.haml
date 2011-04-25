@@ -1,7 +1,7 @@
 %h2 My Destroyers
 
 %p 
-  = pluralize(@destroyers.count, "Destroyer")
+  = pluralize(@total_destroyers, "Destroyer")
   as of 
   = Time.now.to_s(:datelong)
 
