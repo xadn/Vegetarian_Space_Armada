@@ -6,9 +6,8 @@ class ApplicationController < ActionController::Base
   
    DESTROYERS_PER_PAGE = 4
    
-   @total_destroyers = Destroyer.count
-   
    def index
+   	 @total_destroyers = Destroyer.count
    	 @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
    	 render
    end
