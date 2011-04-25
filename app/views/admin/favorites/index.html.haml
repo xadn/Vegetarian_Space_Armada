@@ -15,7 +15,7 @@
   - for favorite in @favorites
     - destroyer = Destroyer.find_by_id(favorite.destroyer_id)
     %tr
-      %td= image_tag(destroyer.photo.url)
+      %td= image_tag(destroyer.photo.url(:thumb))
       %td= h destroyer.name
       %td= h User.find(destroyer.creator).full_name
       %td= h destroyer.price

@@ -2,7 +2,7 @@
 %p
   = render :partial => "by", :locals => {:destroyer => @destroyer}
   
-= image_tag @destroyer.photo.url
+= image_tag @destroyer.photo.url(:medium)
 %p
   %strong Name:
   =h @destroyer.name

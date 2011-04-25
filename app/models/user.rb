@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :role, :counter_cache => true
   
   has_many :destroyers 
-  has_many :favorites
+  has_many :favorites, :dependent => :destroy
   has_many :favorite_destroyers, :class_name => 'Destroyer', :through => :favorites
 
   default_scope :include => :role
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     def assign_default_role
       self.role = Role.find_by_name('member') if role_id.blank?
     end
-
+    
 end
 
 

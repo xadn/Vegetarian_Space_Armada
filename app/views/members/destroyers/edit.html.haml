@@ -5,7 +5,7 @@
 = render :partial => "by", :locals => {:destroyer => @destroyer}
 
 .form_left
-  = image_tag @destroyer.photo.url
+  = image_tag @destroyer.photo.url(:medium)
   
 = render :partial => "form", :locals => {:destroyer => @destroyer}
 
