@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
    @total_destroyers = Destroyer.count
    
    def index
-   	 @destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+   	 @destroyers = Destroyer.paginate(:order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
    	 render
    end
   # A simple route for the application home page or root_url.

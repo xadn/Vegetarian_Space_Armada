@@ -7,7 +7,7 @@ class Admin::AdminController < ApplicationController
     
   def index
   	@total_destroyers = Destroyer.count
-  	@destroyers = Destroyer.paginate(:order => 'created_at ASC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+  	@destroyers = Destroyer.paginate(:order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
     render
   end
   
