@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::AdminController
+class Members::UsersController < Members::MembersController
 
   before_filter :find_user, :only => [:show, :edit, :update, :destroy]
   before_filter :load_roles, :only => [:new, :edit, :update]
