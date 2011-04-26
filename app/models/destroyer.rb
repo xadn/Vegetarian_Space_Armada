@@ -10,6 +10,7 @@ class Destroyer < ActiveRecord::Base
 	@@per_page = 5
   
   validates_presence_of :name, :price, :description, :creator
+  validates_numericality_of :price, :greater_than_or_equal_to => 0
   
   
   has_attached_file :photo,
