@@ -1,9 +1,8 @@
 %h2=@destroyer.name
 
 = render :partial => "by", :locals => {:destroyer => @destroyer}
-%p
-  %strong Favorite:
 
+= image_tag @destroyer.photo.url(:medium)
 %p
   %strong Name:
   =h @destroyer.name
@@ -11,7 +10,8 @@
   %strong Description:
   =h @destroyer.description
 %p
-  %strong Price:
+  %strong Cost:
   =h @destroyer.price
+  ArmadaBucks
 %p
-  = link_to "View All", root_url
+  = link_to image_tag("icon_small_larrow.png", :border=>0) + ' back to list', root_url
