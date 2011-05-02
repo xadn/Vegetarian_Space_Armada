@@ -12,4 +12,8 @@ module FavoritesHelper
      "favorite_button#{destroyer.id}"
    end
    
+   def preload_star_images
+     render :partial => "/members/favorites/star_preload"
+   end
+   
 end

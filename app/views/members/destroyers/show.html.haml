@@ -21,3 +21,5 @@
     |
     = link_to image_tag("icon_small_delete.png", :border=>0) + ' delete', members_destroyer_path(@destroyer), :confirm => 'Are you sure?', :method => :delete
   .star{:id => favorite_div(@destroyer)}= favorite_button(@destroyer)
+
+preload_star_images
