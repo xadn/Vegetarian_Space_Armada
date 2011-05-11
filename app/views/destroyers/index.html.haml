@@ -1,17 +1,28 @@
-- title "Destroyers"
+%h2 All Destroyers
+%p
+  = pluralize(@total_destroyers, "Destroyer")
+  as of
+  = Time.now.to_s(:datelong)
+  
+#pagination
+  = will_paginate @destroyers
+%br
 
 %table
   %tr
+    %th
     %th Name
+    %th Creator
     %th Price
     %th Description
   - for destroyer in @destroyers
     %tr
+      %td= image_tag(destroyer.photo.url(:thumb))
       %td= h destroyer.name
+      %td= h = User.find(destroyer.creator).full_name
       %td= h destroyer.price
-      %td= h destroyer.description
-      %td= link_to 'Show', destroyer
-      %td= link_to 'Edit', edit_destroyer_path(destroyer)
-      %td= link_to 'Destroy', destroyer, :confirm => 'Are you sure?', :method => :delete
-
-%p= link_to "New Destroyer", new_destroyer_path
+      %td= description_and_more(destroyer)
+      %td= link_to image_tag("icon_small_show.png", :border=>0), destroyer_url(destroyer)
+      
+%p#newdest
+  %b= link_to "New Destroyer", new_members_destroyer_path

@@ -1,16 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :favorites
-
-
-  map.root :controller => "application", :action => "index"
+  
+  map.root :controller => 'destroyers'
   map.logout 'logout', :controller => "user_sessions", :action => "destroy"
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.resources :user_sessions, :only => [:new, :create, :destroy]
   map.resources :password_resets, :only => [:new, :create, :edit, :update]
-  map.resources :destroyers, :only => [:show]
   
   map.register 'register', :controller => 'users', :action => 'new'
   map.resources :users, :only => [:new, :create]
+
+  map.resources :destroyers, :only => [:index, :show]
+  map.resources :favorites
 
   map.namespace :admin do |admin|
     admin.resources :favorites, :collection => { :create => :post }

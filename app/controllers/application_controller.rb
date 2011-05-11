@@ -4,17 +4,17 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   helper_method :current_user_session, :current_user, :home_url_for
   
-   DESTROYERS_PER_PAGE = 4
+  #  DESTROYERS_PER_PAGE = 4
    
-   def index
-     @total_destroyers = Destroyer.count
-     @destroyers = Destroyer.paginate(:order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
-   	 render
-   end
-  # A simple route for the application home page or root_url.
-  def show
-  	@destroyer = Destroyer.find(params[:id])
-  end
+  #  def index
+  #    @total_destroyers = Destroyer.count
+  #    @destroyers = Destroyer.paginate(:order => 'created_at DESC',:page => params[:page], :per_page => DESTROYERS_PER_PAGE)
+  #  	 render
+  #  end
+  # # A simple route for the application home page or root_url.
+  # def show
+  # 	@destroyer = Destroyer.find(params[:id])
+  # end
 
   protected
   
